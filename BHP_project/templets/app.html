@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>House Price Predictor</h1>
+            <p>Get accurate price predictions for your dream home</p>
+        </div>
+
+        <form id="predictionForm">
+            <div class="form-group">
+                <label for="area">Area (Square Feet)</label>
+                <input type="number" id="area" name="area" min="100" max="10000" required>
+                <div class="error" id="areaError">Please enter a valid area between 100-10000 sq ft</div>
+            </div>
+
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="bhk">BHK</label>
+                    <select id="bhk" name="bhk" required>
+                        <option value="">Select BHK</option>
+                        <option value="1">1 BHK</option>
+                        <option value="2">2 BHK</option>
+                        <option value="3">3 BHK</option>
+                        <option value="4">4 BHK</option>
+                        <option value="5">5 BHK</option>
+                    </select>
+                    <div class="error" id="bhkError">Please select BHK</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bath">Bathrooms</label>
+                    <select id="bath" name="bath" required>
+                        <option value="">Select Bathrooms</option>
+                        <option value="1">1 Bathroom</option>
+                        <option value="2">2 Bathrooms</option>
+                        <option value="3">3 Bathrooms</option>
+                        <option value="4">4 Bathrooms</option>
+                        <option value="5">5 Bathrooms</option>
+                    </select>
+                    <div class="error" id="bathError">Please select number of bathrooms</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select id="uiLocations" name="location" required>
+                    <option value="">Select Location</option>
+                </select>
+                <div class="error" id="locationError">Please select a location</div>
+            </div>
+
+            <button type="submit" class="predict-btn">Predict Price</button>
+        </form>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Analyzing market data and predicting price...</p>
+        </div>
+
+        <div class="result" id="result">
+            <h3>Predicted Price:</h3>
+            <div class="price" id="predictedPrice">₹0</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
