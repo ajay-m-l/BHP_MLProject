@@ -6,6 +6,12 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+
+@app.route('/')
+def index():
+    return "✅ Bangalore Home Price Prediction API is running!"
+
+
 @app.route('/get_location_names')
 def get_location_names():
     print("get_location_names called")  # Debug print
