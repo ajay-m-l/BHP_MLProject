@@ -46,5 +46,9 @@ This project uses a Linear Regression model trained on Bangalore housing data to
 4. **API**:
     - `GET /get_location_names`: Returns available location names
     - `POST /predict_home_price`: Returns estimated price based on input
-## 📂 Project Structure
+## 🖥️ Sample Output – House Price Prediction
+
+Below is a sample prediction screen from the deployed application. The user enters the house area (in square feet), selects the number of BHK and bathrooms, and chooses a location. On clicking the "Predict Price" button, the model returns the estimated price instantly. This interactive interface provides a real-time, user-friendly experience for estimating house prices in Bangalore.
+
+<img width="1863" height="927" alt="BHP " src="https://github.com/user-attachments/assets/3f6c5e15-8dc1-4938-8b41-7dd664432bfa" />
 
