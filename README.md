@@ -1,54 +1,74 @@
-# 🏠 Bangalore House Price Prediction
+# Bangalore House Price Prediction
 
-A full-stack Machine Learning web application to estimate house prices in Bangalore based on area, location, number of bedrooms (BHK), and bathrooms.
+## Project Overview
+This project predicts Bangalore house prices using key attributes like area, location, BHK, and bathrooms. It features a public web app that accepts user inputs, calls a prediction API, and displays the estimated price.
 
-[🔗 Live Demo](https://bhp-mlproject-1.onrender.com) • [📁 Dataset](https://www.kaggle.com/datasets) • [📦 GitHub Repo](https://github.com/ajay-m-l/BHP_MLProject)
-
-## 🚀 Project Overview
-
-This project uses a Linear Regression model trained on Bangalore housing data to predict home prices. It integrates a Flask backend with an HTML/CSS + JavaScript frontend for seamless user interaction and real-time predictions.
-
-## 🛠️ Tech Stack
-
-### 🎯 Frontend
-- HTML5, CSS3
-- JavaScript
-- Bootstrap (optional)
-
-### ⚙️ Backend
-- Python
-- Flask
-- Flask-CORS
-- Gunicorn (for deployment)
-
-### 📊 Machine Learning
-- Scikit-learn
-- Pandas
-- NumPy
-- Joblib (for saving/loading model)
-
-### ☁️ Deployment
-- Render
-
-## 📦 Features
-
-- 🔎 Predict house price based on inputs like area (sqft), BHK, bathrooms, and location
-- 📍 Dynamic dropdown populated with real location names from dataset
-- 📈 Cleaned and preprocessed dataset with outlier handling
-- 🖥️ Frontend form with validation and loading indicators
-- 🌐 Deployed online using Render
-
-## 🧠 How It Works
-
-1. **Data Preprocessing**: Cleaned dataset, removed outliers, and encoded categorical features.
-2. **Model Training**: Trained a Linear Regression model using `scikit-learn`.
-3. **Model Persistence**: Used `joblib` to save the model and `columns.json` for location mapping.
-4. **API**:
-    - `GET /get_location_names`: Returns available location names
-    - `POST /predict_home_price`: Returns estimated price based on input
-## 🖥️ Sample Output – House Price Prediction
-
-Below is a sample prediction screen from the deployed application. The user enters the house area (in square feet), selects the number of BHK and bathrooms, and chooses a location. On clicking the "Predict Price" button, the model returns the estimated price instantly. This interactive interface provides a real-time, user-friendly experience for estimating house prices in Bangalore.
 
 <img width="1863" height="927" alt="BHP " src="https://github.com/user-attachments/assets/3f6c5e15-8dc1-4938-8b41-7dd664432bfa" />
 
+- **Goal:** Predict house prices accurately using linear regression.
+- **Live Demo:** [https://bhp-mlproject-1.onrender.com](https://bhp-mlproject-1.onrender.com)
+- **GitHub Repo:** [https://github.com/ajay-m-l/BHP_MLProject](https://github.com/ajay-m-l/BHP_MLProject)
+
+## Tech Stack
+- Python, Flask, scikit-learn, Pandas
+- HTML, CSS, JavaScript (Bootstrap)
+- Gunicorn for WSGI web server
+- Render for cloud deployment
+- Git and GitHub for version control
+
+## Data Preparation & Model Training
+- Dataset sourced from Kaggle (Bangalore housing dataset)
+- Data cleaning: Handling missing values, unit standardization, outlier removal via IQR
+- Feature engineering: One-hot encoding for 250+ locations; numeric features for BHK and bathrooms
+- Model: Linear Regression (R² ~ 0.83, RMSE ~ ₹74L)
+- Artifacts saved: model.pkl and columns.json
+
+## Backend Architecture
+- Flask app with routes:
+  - `/` serves the app frontend
+  - `/get_location_names` returns available locations (for dropdown)
+  - `/predict_home_price` handles price prediction requests
+- Uses `util.py` for loading model and prediction logic
+- Gunicorn runs the app in production mode
+- CORS enabled to allow frontend API calls
+
+## Frontend Architecture
+- Bootstrap-based input form in `templates/index.html`
+- `static/app.js` for client-side logic and API communication
+- Validates inputs and presents prediction results dynamically
+
+## Local Development Setup
+1. Create and activate virtual environment  
+   `python -m venv venv && source venv/bin/activate`
+2. Install dependencies  
+   `pip install -r requirements.txt`
+3. Run Flask dev server  
+   `python app.py`
+4. Test API endpoints with Postman or browser
+
+## Deployment on Render
+1. Create new Web Service and connect GitHub repo
+2. Build Command: `pip install -r requirements.txt`
+3. Start Command: `gunicorn app:app`
+4. Render assigns random port; app reads `$PORT`
+5. Note: Free tier instances sleep after 15 minutes of inactivity
+
+## Troubleshooting
+- Static file 404 errors resolved by using `url_for('static', ...)`
+- TemplateNotFound: Ensure `templates/` folder exists in root
+- ModuleNotFoundError (flask_cors): Check correct casing in requirements (`Flask-Cors`)
+- Pin correct scikit-learn version or retrain if warnings occur
+
+## Potential Interview Questions
+- Why use Gunicorn over Flask dev server?
+- How was CORS handled in AJAX calls?
+- Explain feature vector construction and one-hot encoding
+- How to improve model accuracy in production?
+- How does Render port binding and env vars work?
+
+## Future Improvements
+- Add authentication and user history
+- Use Docker and GitHub Actions for CI/CD
+- Experiment with Gradient Boosting (XGBoost) for accuracy
+- Replace vanilla JS frontend with React or Vue.js
