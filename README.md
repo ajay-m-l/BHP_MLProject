@@ -60,13 +60,6 @@ This project predicts Bangalore house prices using key attributes like area, loc
 - ModuleNotFoundError (flask_cors): Check correct casing in requirements (`Flask-Cors`)
 - Pin correct scikit-learn version or retrain if warnings occur
 
-## Potential Interview Questions
-- Why use Gunicorn over Flask dev server?
-- How was CORS handled in AJAX calls?
-- Explain feature vector construction and one-hot encoding
-- How to improve model accuracy in production?
-- How does Render port binding and env vars work?
-
 ## Future Improvements
 - Add authentication and user history
 - Use Docker and GitHub Actions for CI/CD
